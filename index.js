@@ -39,8 +39,8 @@ const newEvent = req.body;
     })
 
     app.get('/users',(req,res)=>{
-      console.log('email',req.query.email)
-      registerCollection.find({email: req.query.email})
+      // console.log('email',req.query.email)
+      registerCollection.find()
       .toArray((err, items) => {
       console.log(err)
         res.send(items)
