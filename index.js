@@ -1,5 +1,6 @@
 const express = require('express');
 const MongoClient = require('mongodb').MongoClient;
+const objectId = require('mongodb').ObjectID
 const cors = require('cors');
 require('dotenv').config()
 const port =  5000
@@ -39,8 +40,8 @@ const newEvent = req.body;
     })
 
     app.get('/users',(req,res)=>{
-      // console.log('email',req.query.email)
-      registerCollection.find()
+      console.log('email',req.query.email)
+      registerCollection.find({email: req.query.email})
       .toArray((err, items) => {
       console.log(err)
         res.send(items)
@@ -48,7 +49,18 @@ const newEvent = req.body;
       })
 
     })
-    
+    app.delete('/delete/:id', (req, res) => {
+
+      registerCollection.deleteOne({ _id: objectId(req.params.id) })
+      
+      .then(result =>{
+        console.log(result)
+      })
+
+    })
+
+
+
 });
 
 
