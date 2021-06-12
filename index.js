@@ -40,7 +40,7 @@ const newEvent = req.body;
     })
 
     app.get('/users',(req,res)=>{
-      // console.log('email',req.query.email)
+      console.log(req.headers.authorization)
       registerCollection.find()
       .toArray((err, items) => {
       console.log(err)
