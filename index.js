@@ -13,6 +13,12 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
 
+
+
+
+
+
+
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.x4chh.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
@@ -40,14 +46,16 @@ const newEvent = req.body;
     })
 
     app.get('/users',(req,res)=>{
-      console.log(req.headers.authorization)
       registerCollection.find()
       .toArray((err, items) => {
       console.log(err)
         res.send(items)
-
+  
       })
 
+
+
+      
     })
     app.delete('/delete/:id', (req, res) => {
 
