@@ -52,7 +52,7 @@ const newEvent = req.body;
     app.delete('/delete/:id', (req, res) => {
 
       registerCollection.deleteOne({ _id: objectId(req.params.id) })
-      
+      console.log(req.params.id)
       .then(result =>{
         console.log(result)
       })
